@@ -22,7 +22,7 @@ public class LogToModel {
 			System.out.println("args num wrong!");
 			System.exit(0);
 		}
-
+ 
 		String inputPath = args[0];
 		String outputPath = args[1];
 		String confPath = args[2];
