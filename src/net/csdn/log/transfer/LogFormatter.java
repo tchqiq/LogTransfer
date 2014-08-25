@@ -3,47 +3,48 @@ package net.csdn.log.transfer;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.base.Predicates;
-import com.google.common.io.CharStreams;
 
-public class LogToModel {
+public class LogFormatter {
 
 	public static void main(String[] args) {
-		if (args.length != 3) {
-			System.out.println("args num wrong!");
-			System.exit(0);
-		}
+//		if (args.length != 3) {
+//			System.out.println("args num wrong!");
+//			System.exit(0);
+//		}
  
-		String inputPath = args[0];
-		String outputPath = args[1];
-		String confPath = args[2];
+//		String inputPath = args[0];
+//		String inputPath = args[0];
+//		String outputPath = args[1];
+		String confPath = "d:\\work\\conf\\download_download.json";
+		String inputPath = "d:\\work\\conf\\download_download.input";
+		String outputPath = "d:\\work\\conf\\download_download.output";
 
-		JSONArray jarr = getConfJson(confPath);
+		JSONObject obj = getConfJson(confPath);
 
-		transfer(inputPath, outputPath, jarr);
+		transfer(inputPath, outputPath, obj);
 	}
 
 	private static void transfer(String inputPath, String outputPath,
-			JSONArray jarr) {
+			JSONObject obj) {
 
 		BufferedReader br = null;
-		BufferedWriter bw = null;
 
+		String splitter = obj.getString("splitter");
+		JSONArray array = obj.getJSONArray("array");
+		JSONArray def = obj.getJSONArray("default");
+		
 		try {
 			br = new BufferedReader(new FileReader(new File(inputPath)));
 			String line = null;
-			int jsize = jarr.size();
+			int jsize = array.size();
 			while ((line = br.readLine()) != null) {
-				String[] strs = line.split("\t");
+				String[] strs = line.split(splitter);
 				if (strs.length != jsize) {
 					System.out
 							.println("log clumns is not match the conf of json :"
@@ -52,7 +53,7 @@ public class LogToModel {
 				}
 
 				for (int i = 0; i < jsize; i++) {
-
+					
 				}
 
 			}
@@ -64,20 +65,20 @@ public class LogToModel {
 
 	}
 
-	private static JSONArray getConfJson(String confPath) {
-		JSONArray jarr = null;
+	private static JSONObject getConfJson(String confPath) {
+		JSONObject obj = null;
 		try {
-			File file = new File("confPath");
+			File file = new File(confPath);
 			FileReader reader = new FileReader(file);
 			int fileLen = (int) file.length();
 			char[] chars = new char[fileLen];
 			reader.read(chars);
 			String txt = String.valueOf(chars);
-			jarr = JSONObject.parseArray(txt);
+			obj = JSONObject.parseObject(txt);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return jarr;
+		return obj;
 	}
 }
