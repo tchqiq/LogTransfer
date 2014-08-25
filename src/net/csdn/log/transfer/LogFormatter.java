@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import net.csdn.log.bean.LogModel;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -30,6 +32,11 @@ public class LogFormatter {
 		transfer(inputPath, outputPath, obj);
 	}
 
+	/**
+	 * @param inputPath
+	 * @param outputPath
+	 * @param obj
+	 */
 	private static void transfer(String inputPath, String outputPath,
 			JSONObject obj) {
 
@@ -38,7 +45,7 @@ public class LogFormatter {
 		String splitter = obj.getString("splitter");
 		JSONArray array = obj.getJSONArray("array");
 		JSONArray def = obj.getJSONArray("default");
-		
+		LogModel model = new LogModel(def);
 		try {
 			br = new BufferedReader(new FileReader(new File(inputPath)));
 			String line = null;
@@ -53,6 +60,7 @@ public class LogFormatter {
 				}
 
 				for (int i = 0; i < jsize; i++) {
+					JSONObject joj = array.getJSONObject(i);
 					
 				}
 

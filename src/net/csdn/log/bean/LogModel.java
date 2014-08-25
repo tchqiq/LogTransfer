@@ -1,11 +1,18 @@
 package net.csdn.log.bean;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 public class LogModel {
+	public LogModel(JSONArray def) {
+		for(int i=0; i<def.size(); i++) {
+			JSONObject obj = def.getJSONObject(i);
+			
+		}
+	}
 	@Override
 	public String toString() {
-		sb.insert(0, record_time);
+		sb.insert(0, record_time + "\001" + IP);
 		sb.append(addr);
 		sb.append("pid="+pid);
 		sb.append("sub_pid="+sub_pid);
@@ -22,8 +29,9 @@ public class LogModel {
 		return sb.toString();
 	}
 	
-	private StringBuilder sb = new StringBuilder("192.168.5.144\001200\001200\001POST /push/");
+	private StringBuilder sb = new StringBuilder("\001200\001200\001POST /push/");
 	
+	private String IP;
 	private String record_time;
 	private String addr;
 	private String pid;
@@ -108,6 +116,12 @@ public class LogModel {
 	}
 	public void setSrc_date(JSONObject src_date) {
 		this.src_data = src_date;
+	}
+	public String getIP() {
+		return IP;
+	}
+	public void setIP(String iP) {
+		IP = iP;
 	}
 
 }
