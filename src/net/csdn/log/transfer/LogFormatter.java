@@ -7,7 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import net.csdn.log.bean.LogModel;
+import net.csdn.log.bean.ModelBean;
+import net.csdn.log.cooker.TypeCooker;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -45,7 +46,7 @@ public class LogFormatter {
 		String splitter = obj.getString("splitter");
 		JSONArray array = obj.getJSONArray("array");
 		JSONArray def = obj.getJSONArray("default");
-		LogModel model = new LogModel(def);
+		ModelBean modelBean = new ModelBean(def);
 		try {
 			br = new BufferedReader(new FileReader(new File(inputPath)));
 			String line = null;
@@ -61,7 +62,8 @@ public class LogFormatter {
 
 				for (int i = 0; i < jsize; i++) {
 					JSONObject joj = array.getJSONObject(i);
-					
+					joj.put("value", strs[1]);
+					TypeCooker.cook(modelBean, joj);
 				}
 
 			}
