@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import net.csdn.log.bean.ModelBean;
@@ -42,6 +43,7 @@ public class LogFormatter {
 			JSONObject obj) {
 
 		BufferedReader br = null;
+		BufferedWriter bw = null;
 
 		String splitter = obj.getString("splitter");
 		JSONArray array = obj.getJSONArray("array");
@@ -49,6 +51,7 @@ public class LogFormatter {
 		ModelBean modelBean = new ModelBean(def);
 		try {
 			br = new BufferedReader(new FileReader(new File(inputPath)));
+			bw = new BufferedWriter(new FileWriter(new File(outputPath)));
 			String line = null;
 			int jsize = array.size();
 			while ((line = br.readLine()) != null) {
@@ -62,9 +65,13 @@ public class LogFormatter {
 
 				for (int i = 0; i < jsize; i++) {
 					JSONObject joj = array.getJSONObject(i);
-					joj.put("value", strs[1]);
+					joj.put("value", strs[i]);
 					TypeCooker.cook(modelBean, joj);
 				}
+				
+				bw.write(modelBean.toString());
+				bw.newLine();
+				bw.flush();
 
 			}
 		} catch (FileNotFoundException e) {

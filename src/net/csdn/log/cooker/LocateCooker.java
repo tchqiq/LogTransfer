@@ -12,9 +12,6 @@ import net.csdn.log.cooker.forklift.Tool;
  */
 public class LocateCooker {
 
-	JSONObject dataJson = new JSONObject();
-	JSONObject srcJson = new JSONObject();
-	
 	public void cookParam(ModelBean modelBean, JSONObject obj) {
 		
 		Tool.cookBean(modelBean, obj);
@@ -22,14 +19,12 @@ public class LocateCooker {
 	}
 
 	public void cookData(ModelBean modelBean, JSONObject obj) {
-		dataJson.put(obj.getString("name"), obj.getString("value"));
-		modelBean.setData(dataJson);
+		modelBean.setData(obj.getString("name"), obj.getString("value"));
 		
 	}
 
 	public void cookSrcData(ModelBean modelBean, JSONObject obj) {
-		srcJson.put(obj.getString("name"), obj.getString("value"));
-		modelBean.setData(srcJson);
+		modelBean.setSrc_date(obj.getString("name"), obj.getString("value"));
 		
 	}
 
