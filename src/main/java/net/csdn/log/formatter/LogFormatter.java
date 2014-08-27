@@ -1,4 +1,4 @@
-package net.csdn.log.transfer;
+package net.csdn.log.formatter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
