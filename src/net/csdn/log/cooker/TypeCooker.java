@@ -41,12 +41,13 @@ public class TypeCooker {
 
 	public static void cook(ModelBean modelBean, JSONObject obj) {
 
-		if ("multipe".equals(obj.getString("type"))) {
+		if ("multiple".equals(obj.getString("type"))) {
 
 			JSONArray array = JSONArray.parseArray(obj.getString("locate"));
 
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject obj2 = array.getJSONObject(i);
+				obj2.put("value",obj.getString("value"));
 				cook(modelBean, obj2);
 			}
 
