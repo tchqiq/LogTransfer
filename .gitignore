@@ -1,8 +1,7 @@
 target/
 lib/
-/.classpath
 /.fatjar
-/.project
 /.settings
 /bin
 settings.fatjar
+.*
