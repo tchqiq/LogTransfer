@@ -35,17 +35,17 @@ public class LogFormatter {
 
 	public static void main(String[] args) {
 
-		 if (args.length != 3) {
-		 System.out.println("args num wrong!");
-		 System.exit(0);
-		 }
-		
-		 String confPath = args[0];
-		 String inputPath = args[1];
-		 String outputPath = args[2];
-		// String confPath = "d:\\work\\conf\\download_download.json";
-		// String inputPath = "d:\\work\\conf\\download_download.input";
-		// String outputPath = "d:\\work\\conf\\download_download.output";
+//		 if (args.length != 3) {
+//		 System.out.println("args num wrong!");
+//		 System.exit(0);
+//		 }
+//		
+//		 String confPath = args[0];
+//		 String inputPath = args[1];
+//		 String outputPath = args[2];
+		 String confPath = "d:\\work\\conf\\download_sources.json";
+		 String inputPath = "d:\\work\\conf\\download_sources.input";
+		 String outputPath = "d:\\work\\conf\\download_sources.output";
 
 		JSONObject obj = getConfJson(confPath);
 

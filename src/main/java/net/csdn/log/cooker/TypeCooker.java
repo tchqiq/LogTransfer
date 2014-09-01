@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Strings;
 
 import net.csdn.log.bean.ModelBean;
 import net.csdn.log.cooker.forklift.Tool;
@@ -55,6 +56,11 @@ public class TypeCooker {
 
 		} else if ("mapping".equals(obj.getString("type"))) {
 			JSONObject jmap = obj.getJSONObject("mapping");
+			String value = jmap.getString(obj.getString("value"));
+				
+			obj.put("value", value);
+			Tool.cookLocate(modelBean, obj);
+				
 		}
 
 	}
