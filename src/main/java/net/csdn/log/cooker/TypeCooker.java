@@ -12,32 +12,6 @@ import net.csdn.log.cooker.forklift.Tool;
 
 public class TypeCooker {
 
-/*	public void cook(ModelBean modelBean, String type, String locate,
-			String value) {
-
-		if ("multipe".equals(type)) {
-
-			JSONArray array = JSONArray.parseArray(locate);
-
-			for (int i = 0; i < array.size(); i++) {
-				JSONObject obj = array.getJSONObject(i);
-				this.cook(modelBean, obj.getString("type"),
-						obj.getString("locate"), value);
-			}
-
-		} else if ("string".equals(type)) {
-
-			Tool.cookLocate(modelBean, locate, value);
-
-		} else if ("time".equals(type)) {
-
-			if ("timestamp".equals(type)) {
-
-			}
-
-		}
-
-	}*/
 
 	public static void cook(ModelBean modelBean, JSONObject obj) {
 
@@ -79,6 +53,8 @@ public class TypeCooker {
 				
 			}
 
+		} else if ("mapping".equals(obj.getString("type"))) {
+			JSONObject jmap = obj.getJSONObject("mapping");
 		}
 
 	}

@@ -1,7 +1,6 @@
 target/
 lib/
 /.fatjar
-/.settings
 /bin
 settings.fatjar
-.*
+LogFormatter.jar
