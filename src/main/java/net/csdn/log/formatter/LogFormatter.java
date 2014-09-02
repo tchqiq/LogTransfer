@@ -43,9 +43,9 @@ public class LogFormatter {
 //		 String confPath = args[0];
 //		 String inputPath = args[1];
 //		 String outputPath = args[2];
-		 String confPath = "d:\\work\\conf\\download_sources.json";
-		 String inputPath = "d:\\work\\conf\\download_sources.input";
-		 String outputPath = "d:\\work\\conf\\download_sources.output";
+		 String confPath = "d:\\work\\conf\\download_comment_action.json";
+		 String inputPath = "d:\\work\\conf\\download_download.input";
+		 String outputPath = "d:\\work\\conf\\download_comment_action.output";
 
 		JSONObject obj = getConfJson(confPath);
 
@@ -83,7 +83,7 @@ public class LogFormatter {
 			while ((line = br.readLine()) != null) {
 				String[] strs = line.split(splitter);
 				if (strs.length != jsize) {
-					System.out.println("log clumns is not match the conf of json" + count + ":" + line);
+					System.out.println("log clumns is not match the conf of json " + count + ":" + line);
 					continue;
 				}
 

@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.csdn.hive</groupId>
-	<artifactId>udfs</artifactId>
+	<artifactId>formatter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>udfs</name>
+	<name>logformatter</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -37,11 +37,6 @@
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>serviceframework.analyzer</groupId>
-			<artifactId>anayzer</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.guava-osgi</groupId>
